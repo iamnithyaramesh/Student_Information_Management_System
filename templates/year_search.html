@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #28357b;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      padding: 0;
+      color: #ffffff;
+      font-family: 'Work Sans', sans-serif;
+      margin-top: 0;
+    }
+
+    .navbar {
+      background-color: #fff;
+      margin-top: 0;
+      width: 100%;
+    }
+
+    .navbar-brand img {
+      height: 50px;
+      margin-right: 15px;
+    }
+
+    .container {
+      background-color: #ffffff;
+      width: 92%;
+      margin-top: 60px; 
+      border-radius: 8px;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      height: fit-content;
+      position: relative;
+      overflow: hidden;
+      transition: background-color 0.5s;
+      font-size: 22px;
+      margin-top: 50px;
+      color: #7b7777;
+    }
+
+    h1 {
+      font-size: 40px;
+      font-weight: bold;
+      margin-top: 20px;
+      color: #ffffff;
+      opacity: 1;
+    }
+
+    h2 {
+      font-size: 40px;
+      font-weight: bold;
+      margin-top: 20px;
+      color: #7b7777;
+      opacity: 1;
+    }
+
+    h {
+      font-size: 32px;
+      font-weight: bold;
+      margin-top: 20px;
+      color: #7b7777;
+      opacity: 1;
+    }
+
+    .container button {
+      margin-top: 30px;
+      background-color: #28357b;
+      color: #fff;
+      border: none;
+      opacity: 0;
+      height: 75px;
+      font-size: 22px;
+      transition: opacity 0.5s;
+      width: 20%;
+    }
+
+    .container:hover button {
+      opacity: 1;
+    }
+
+    .container input {
+      margin-top: 0px;
+      text-align: left;
+      width: 70%;
+      font-size: 20px;
+    }
+
+    .container .input-group-text {
+      text-align: left;
+    }
+
+    .container .input-group-text span {
+      display: block;
+    }
+
+    .container select {
+      margin-top: 20px;
+      padding: 10px;
+      font-size: 20px;
+      width: 500px;
+      height: 50px;
+    }
+
+    .container input[type="radio"] {
+      margin-top: 20px;
+      /* Adjusted margin */
+    }
+
+    h4 {
+      font-size: 25px;
+      font-weight: bold;
+      margin-top: 25px;
+      color: #7b7777;
+      opacity: 1;
+    }
+
+    .form-check {
+      text-align: left;
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+    }
+
+    .form-check-label {
+      margin-left: 10px;
+    }
+
+    .container button {
+      margin-top: 30px; /* Adjusted margin */
+      background-color: #28357b;
+      color: #fff;
+      border: none;
+      opacity: 0;
+      height: 75px; /* Adjusted height */
+      font-size: 22px;
+      transition: opacity 0.5s;
+      width: 20%;
+    }
+
+    .container:hover button {
+      opacity: 1;
+    }
+
+    table-container {
+      overflow-x: auto;
+      max-width: 100%;
+      margin-top: 20px; /* Adjusted margin */
+    }
+
+    .table {
+      font-size: 16px; /* Adjusted font size */
+    }
+
+    .table th, .table td {
+      white-space: nowrap;
+    }
+
+    
+    .table th:nth-child(1),
+    .table td:nth-child(1),
+    .table th:nth-child(2),
+    .table td:nth-child(2),
+    .table th:nth-child(3),
+    .table td:nth-child(3),
+    .table th:nth-child(4),
+    .table td:nth-child(4),
+    .table th:nth-child(5),
+    .table td:nth-child(5),
+    .table th:nth-child(6),
+    .table td:nth-child(6),
+    .table th:nth-child(7),
+    .table td:nth-child(7),
+    .table th:nth-child(8),
+    .table td:nth-child(8),
+    .table th:nth-child(9),
+    .table td:nth-child(9) {
+      width:35px;
+      font-size:8.5px;
+      font-weight: bold;
+    }
+
+  
+    @media (max-width: 767px) {
+      .table-container {
+        overflow-x: auto;
+      }
+    }
+
+    
+  </style>
+</head>
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <button class="navbar-toggler" type="button" data-toggle="offcanvas">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        <img src="{{ url_for('static', filename='ssn_logo.png') }}">
+      </a>
+    </nav>
+  </header>
+  <h1 class="text-center">Admin Login</h1>
+  <form method="POST" action="{{ url_for('year_wise') }}" id="yearSearchForm">
+    <div class="container">
+      <h2>Year-Wise Search Page</h2>
+      <h3 class="text-left">Choose Year</h3>
+      <select class="form-control" name="selectedYear" id="selectedYear">
+        <option value="II year">II year</option>
+        <option value="III year">III year</option>
+        <option value="I Year PG">I Year PG</option>
+      </select>
+      <button type="submit" class="btn btn-primary">Submit</button>
+
+      {% if num_students %}
+        <h3>Number of Students : {{ num_students }}</h3>
+      {% endif %}
+
+      {% if students %}
+        <h3>Fetched Records</h3>
+        <div class="table-container">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>SNO</th>
+                <th>REGISTER_NUMBER</th>
+                <th>STUDENT_NAME</th>
+                <th>YEAR</th>
+                <th>SUBCODE</th>
+                <th>COURSE_TITLE</th>
+                <th>CREDITS</th>
+                <th>NPTEL_MARK</th>
+                <th>SSN_MARKS</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for student in students %}
+                <tr>
+                  <td>{{ student[0] }}</td>
+                  <td>{{ student[1] }}</td>
+                  <td>{{ student[2] }}</td>
+                  <td>{{ student[3] }}</td>
+                  <td>{{ student[4] }}</td>
+                  <td>{{ student[5] }}</td>
+                  <td>{{ student[6] }}</td>
+                  <td>{{ student[7] }}</td>
+                  <td>{{ student[8] }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      {% endif %}
+    </div>
+  </form>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+
+  <script>
+    document.getElementById('submitBtn').addEventListener('click', function () {
+      var selectedYear = document.getElementById('selectedYear').value;
+      var submitUrl = "{{ url_for('year_wise', selectedYear='') }}" + selectedYear;
+      window.location.href = submitUrl;
+    });
+  </script>
+
+</body>
+
+</html>

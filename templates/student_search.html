@@ -48,35 +48,44 @@
       position: relative;
       overflow: hidden;
       transition: background-color 0.5s;
-      font-size: 22px;
+      font-size: 18px;
       margin-top: 50px;
       color: #7b7777;
     }
-    h2 {
-      font-size: 40px;
-      font-weight: bold;
-      margin-top: 20px;
-      color: #ffffff;
-      opacity: 1;
 
-    }
     h1 {
       font-size: 40px;
       font-weight: bold;
       margin-top: 20px;
+      color: rgb(255, 255, 255);
+      opacity: 1;
+    }
+
+    h3 {
+      font-size: 20px;
+      font-weight: bold;
+      margin-top: 20px;
       color: #7b7777;
       opacity: 1;
+    }
 
+    h2 {
+      font-size: 40px;
+      font-weight: bold;
+      margin-top: 20px;
+      color: #7b7777;
+      opacity: 1;
     }
 
     .list-group {
-      margin-top: 30px;
+      margin-top: 40px;
+      font-size: 22px;
     }
 
     .list-group-item {
       background-color: #ffffff;
       color: #28357b;
-      font-size: 30px;
+      font-size: 18px; /* Adjust the font size as needed */
       cursor: pointer;
       border: none;
     }
@@ -86,8 +95,55 @@
       color: #fff;
       border-radius: 8px;
     }
+
+    table-container {
+      overflow-x: auto;
+      max-width: 100%;
+      margin-top: 20px; /* Adjusted margin */
+    }
+
+    .table {
+      font-size: 16px; /* Adjusted font size */
+    }
+
+    .table th, .table td {
+      white-space: nowrap;
+    }
+
+    
+    .table th:nth-child(1),
+    .table td:nth-child(1),
+    .table th:nth-child(2),
+    .table td:nth-child(2),
+    .table th:nth-child(3),
+    .table td:nth-child(3),
+    .table th:nth-child(4),
+    .table td:nth-child(4),
+    .table th:nth-child(5),
+    .table td:nth-child(5),
+    .table th:nth-child(6),
+    .table td:nth-child(6),
+    .table th:nth-child(7),
+    .table td:nth-child(7),
+    .table th:nth-child(8),
+    .table td:nth-child(8),
+    .table th:nth-child(9),
+    .table td:nth-child(9) {
+      width:30px;
+      font-size:10px;
+      font-weight: bold;
+    }
+
+  
+    @media (max-width: 767px) {
+      .table-container {
+        overflow-x: auto;
+      }
+    }
   </style>
 </head>
+<body>
+</header>
 
 <body>
   <header>
@@ -100,16 +156,57 @@
       </a>
     </nav>
   </header>
-  <h2 class="text-center">Admin Login</h2>
+  
+  <h1 class="text-center">Admin Login</h1>
   <div class="container">
-    <h1 class="text-center">View and Search Page</h1>
-    <div class="list-group">
-      <a href="{{ url_for('year_wise') }}" class="list-group-item">View Year-wise Data</a>
-      <a href="{{ url_for('complete_courses') }}" class="list-group-item">View Courses Completed by a Student</a>
-      <a href="{{ url_for('get_courses') }}" class="list-group-item">View Course-wise Data</a>
-      <a href="{{ url_for('academic_year') }}" class="list-group-item">View Academic Year wise Data</a>
-      <a href="{{url_for('insert_records')}}" class="list-group-item">Insert Details into Database</a>
-    </div>
+    <h2>Student - Search Page</h2>
+    <form method="POST" action="{{ url_for('complete_courses') }}" id="searchForm">
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">
+          <span>Enter the name of the student to search</span>
+        </span>
+        <input type="text" class="form-control" name="studentName" placeholder="Enter Student Name" aria-label="Username"
+          aria-describedby="basic-addon1" required>
+      </div>
+
+      {% if students %}
+        <div id="student_records" class="mb-3">
+          <h3>Student Records:</h3>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Serial Number</th>
+                <th>Register Number</th>
+                <th>Student Name</th>
+                <th>Year</th>
+                <th>Subject Code</th>
+                <th>Course Title</th>
+                <th>Credits</th>
+                <th>NPTEL Marks</th>
+                <th>SSN Marks</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for student in students %}
+                <tr>
+                  <td>{{ student[0] }}</td>
+                  <td>{{ student[1] }}</td>
+                  <td>{{ student[2] }}</td>
+                  <td>{{ student[3] }}</td>
+                  <td>{{ student[4] }}</td>
+                  <td>{{ student[5] }}</td>
+                  <td>{{ student[6] }}</td>
+                  <td>{{ student[7] }}</td>
+                  <td>{{ student[8] }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      {% endif %}
+
+      <button type="submit" class="btn btn-secondary">Search</button>
+    </form>
   </div>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
